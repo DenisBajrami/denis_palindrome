@@ -2,20 +2,23 @@ require "test_helper"
 
 class DenisBajramiPalindromeTest < Minitest::Test
 
-
-# Returns true for a palindrome, false otherwise.
-  def palindrome?
-    processed_content == processed_content.reverse
+  def test_non_palindrome
+    refute "apple".palindrome?
   end
 
-# Returns the letters in the string.
-  def letters
+  def test_literal_palindrome
+    assert "racecar".palindrome?
   end
 
-  private
+  def test_mixed_case_palindrome
+    assert "RaceCar".palindrome?
+  end
 
-# Returns content for palindrome testing.
-  def processed_content
-    self.downcase
+  def test_palindrome_with_punctuation
+    assert "Madam, I'm Adam.".palindrome?
+  end
+
+  def test_letters
+    assert_equal "MadamImAdam", "Madam, I'm Adam.".letters
   end
 end
