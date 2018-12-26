@@ -9,12 +9,13 @@ class String
 
   # Returns the letters in the string.
   def letters
+    self.chars.select {|c| c.match(/[a-z]/i) }.join
   end
 
   private
 
   # Returns content for palindrome testing.
   def processed_content
-    self.downcase
+    self.letters.downcase
   end
 end
